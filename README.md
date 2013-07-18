@@ -17,10 +17,14 @@ getPosition(function (err, pos) {
 
 ## API
 
-### getPosition(fn(err, pos))
+### getPosition([options], fn(err, pos))
 
 Request the current geposition and call fn with the possible error - caused
 e.g. by permission conflicts or hardware problems - and the current position.
+
+Possible options are:
+
+* `timeout (Number)`: Give up after x miliseconds.
 
 ## Installation
 
