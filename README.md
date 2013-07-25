@@ -33,6 +33,30 @@ defaults are set, if you don't override them:
 }
 ```
 
+The result object also is changed, instead of
+
+```json
+{
+  "timestamp": 1374719989787,
+  "coords": { "latitude": ... }
+}
+```
+
+it's just a flat object with the `timestamps` attribute on itself:
+
+```json
+{
+  "accuracy": 27,
+  "altitude": null,
+  "altitudeAccuracy": null,
+  "heading": null,
+  "latitude": 40.721600300000006,
+  "longitude": -74.0018673,
+  "speed": null,
+  "timestamp": 1374719989787  
+}
+```
+
 ## Installation
 
 With [npm](http://npmjs.org) do
