@@ -1,7 +1,7 @@
 
 # geo-position
 
-A thin wrapper around browsers' geoposition apis.
+A more sane wrapper around browsers' position apis.
 
 ## Usage
 
@@ -22,9 +22,16 @@ getPosition(function (err, pos) {
 Request the current geposition and call fn with the possible error - caused
 e.g. by permission conflicts or hardware problems - and the current position.
 
-Possible options are:
+`options` are passed down to the browser's geolocation api, but some sensible
+defaults are set, if you don't override them:
 
-* `timeout (Number)`: Give up after x miliseconds.
+```json
+{
+  "timeout": 5000,
+  "maximumAge": 60000,
+  "highAccuracy": true  
+}
+```
 
 ## Installation
 
