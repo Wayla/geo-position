@@ -12,7 +12,11 @@ function getPosition (opts, fn) {
     enableHighAccuracy: true
   });
 
-  var onposition = fn.bind(null, null);
+  var onposition = function (position) {
+    var ret = position.coords;
+    ret.timestamp = position.timestamp;
+    fn(null, ret);
+  };
   var onerror = fn;
 
   navigator.geolocation.getCurrentPosition(onposition, onerror, opts);
