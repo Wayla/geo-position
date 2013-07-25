@@ -6,28 +6,20 @@ function getPosition (opts, fn) {
     opts = {};
   }
 
-  if (typeof opts.timeout == 'undefined') opts.timeout = 5000;
-  var unlessTimedOut = createTimeoutHandler(fn, opts.timeout);
+  unlessDefined(opts, {
+    timeout: 5000,
+    maximumAge: 60000,
+    enableHighAccuracy: true
+  });
 
-  var onposition = unlessTimedOut(fn.bind(this, null));
-  var onerror = unlessTimedOut(fn.bind(this));
+  var onposition = fn.bind(null, null);
+  var onerror = fn;
 
-  navigator.geolocation.getCurrentPosition(onposition, onerror);
+  navigator.geolocation.getCurrentPosition(onposition, onerror, opts);
 }
 
-function createTimeoutHandler (fn, timeout) {
-  var timedOut = false;
-
-  var id = setTimeout(function () {
-    timedOut = true;
-    fn(new Error('timed out'));
-  }, timeout);
-
-  return function unlessTimedOut (fn) {
-    return function () {
-      if (timedOut) return;
-      clearTimeout(id);
-      fn.apply(null, arguments);
-    }
-  }
+function unlessDefined (base, xtend) {
+  Object.keys(xtend).forEach(function (key) {
+    if (typeof base[key] == 'undefined') base[key] = xtend[key];
+  });
 }
