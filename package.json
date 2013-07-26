@@ -1,15 +1,19 @@
 {
-  "name" : "geo-position",
-  "description" : "A sane wrapper around browsers' geoposition apis.",
-  "version" : "1.0.0",
-  "repository" : {
-    "type" : "git",
-    "url" : "git://github.com/Wayla/geo-position.git"
+  "name": "geo-position",
+  "description": "A sane wrapper around browsers' geoposition apis.",
+  "version": "1.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Wayla/geo-position.git"
   },
   "homepage": "https://github.com/Wayla/geo-position",
-  "main" : "index.js",
-  "dependencies" : {},
-  "keywords": ["browser","geoposition","location"],
+  "main": "index.js",
+  "dependencies": {},
+  "keywords": [
+    "browser",
+    "geoposition",
+    "location"
+  ],
   "author": {
     "name": "Julian Gruber",
     "email": "julian@wayla.com",
