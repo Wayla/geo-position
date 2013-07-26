@@ -12,12 +12,13 @@ function getPosition (opts, fn) {
     enableHighAccuracy: true
   });
 
-  var onposition = function (position) {
+  var once = Once();
+  var onposition = once(function (position) {
     var ret = position.coords;
     ret.timestamp = position.timestamp;
     fn(null, ret);
-  };
-  var onerror = fn;
+  });
+  var onerror = once(fn);
 
   navigator.geolocation.getCurrentPosition(onposition, onerror, opts);
 }
@@ -27,3 +28,15 @@ function unlessDefined (base, xtend) {
     if (typeof base[key] == 'undefined') base[key] = xtend[key];
   });
 }
+
+function Once () {
+  var called = false;
+  return function (fn) {
+    return function () {
+      if (called) return;
+      called = true;
+      fn.apply(this, arguments);
+    }
+  }
+}
+
