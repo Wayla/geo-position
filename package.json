@@ -1,7 +1,7 @@
 {
   "name": "geo-position",
   "description": "A sane wrapper around browsers' geoposition apis.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/Wayla/geo-position.git"
