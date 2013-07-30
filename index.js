@@ -14,7 +14,7 @@ function getPosition (opts, fn) {
 
   var once = Once();
   var onposition = once(function (position) {
-    var ret = position.coords;
+    var ret = clone(position.coords);
     ret.timestamp = position.timestamp;
     fn(null, ret);
   });
@@ -38,5 +38,13 @@ function Once () {
       fn.apply(this, arguments);
     }
   }
+}
+
+function clone (obj) {
+  var ret = {};
+  Object.keys(obj).forEach(function (k) {
+    ret[k] = obj[k];
+  });
+  return ret;
 }
 
