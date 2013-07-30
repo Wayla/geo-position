@@ -8,7 +8,10 @@
   },
   "homepage": "https://github.com/Wayla/geo-position",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "once": "~1.1.1",
+    "obj": "0.0.0"
+  },
   "keywords": [
     "browser",
     "geoposition",
